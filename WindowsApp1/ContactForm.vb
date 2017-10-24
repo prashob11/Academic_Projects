@@ -182,22 +182,26 @@ Public Class ContactForm
     Private Sub ImportCSVFile()
         Dim importFile As String = ""
         Dim csvFile As String = ""
+        Try
 
-        Dim fd As OpenFileDialog = New OpenFileDialog()
-        fd.Title = "Select CSV file to import"
-        fd.Filter = "All files (*.*)|*.*|All files (*.*)|*.*"
-        fd.FilterIndex = 2
-        fd.RestoreDirectory = True
-        If fd.ShowDialog() = DialogResult.OK Then
-            importFile = fd.FileName
-            tb_csvimport.Text = importFile
-            csvFile = importFile
-            MsgBox("File Uploaded Sucessfully!")
+            Dim fd As OpenFileDialog = New OpenFileDialog()
+            fd.Title = "Select CSV file to import"
+            fd.Filter = "All files (*.*)|*.*|All files (*.*)|*.*"
+            fd.FilterIndex = 2
+            fd.RestoreDirectory = True
+            If fd.ShowDialog() = DialogResult.OK Then
+                importFile = fd.FileName
+                tb_csvimport.Text = importFile
+                csvFile = importFile
+                MsgBox("File Uploaded Sucessfully!")
 
-        Else
+            Else
 
-        End If
-        LoadFromCSVFile(csvFile)
+            End If
+            LoadFromCSVFile(csvFile)
+        Catch ex As Exception
+
+        End Try
 
     End Sub
 
